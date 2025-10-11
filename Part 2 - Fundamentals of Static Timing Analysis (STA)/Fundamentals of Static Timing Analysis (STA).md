@@ -90,9 +90,34 @@ The difference between Required time and Arrival time.
 
 ---
 
-## Transition (Slew) Analysis
-## Load Analysis
-## Clock Analysis
+### Transition (Slew) Analysis
+```mermaid
+flowchart TD
+    A["Transition (Slew) Analysis"] --> B["Measures rise/fall time of a signal"]
+    B --> C["Branch by Type"]
+    C --> D["Data Slew (Min/Max)"]
+    C --> E["Clock Slew (Min/Max)"]
+```
+
+### Load Analysis
+```mermaid
+flowchart TD
+    A["Load Analysis"] --> B["Depends on"]
+    B --> C["Fan-out (Max/Min)"]
+    B --> D["Capacitance (Max/Min)"]
+    C --> E["Influences delay of driving cell"]
+    D --> E
+```
+### Clock Analysis
+```mermaid
+flowchart TD
+    A[Clock Analysis] --> B{Check Types}
+    B --> C[Clock Skew]
+    B --> D[Pulse Width]
+    
+    C --> E[Difference in clock arrival times at registers]
+    D --> F[Ensure clock pulse is wide enough for latches/FFs]
+```
 
 ---
 
